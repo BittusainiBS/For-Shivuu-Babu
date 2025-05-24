@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For My Shivuu 💜</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #2a0a3a, #7b2cbf, #4a154b);
+      background-size: 400% 400%;
+      animation: bgShift 20s ease infinite;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      color: #e0aaff;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .love-text {
+      font-size: 4em;
+      color: #e0aaff;
+      text-shadow: 0 0 25px #c77dff;
+      animation: heartbeat 1.5s infinite;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-size: 3em;
+      color: #c77dff;
+      animation: float 3s ease-in-out infinite;
+      text-shadow: 0 0 10px #9d4edd;
+    }
+
+    .message {
+      font-size: 1.4em;
+      margin-top: 20px;
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.3); }
+      45% { transform: scale(1.15); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 10px #9d4edd; }
+      50% { text-shadow: 0 0 20px #e0aaff; }
+    }
+
+    .purple-btn {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      background: linear-gradient(45deg, #7b2cbf, #9d4edd);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px #d0a3ff;
+    }
+
+    .purple-btn:hover {
+      background: linear-gradient(45deg, #9d4edd, #c77dff);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #f3c1ff;
+    }
+
+    .sparkles, .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sparkle, .heart {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .sparkle {
+      background: white;
+      width: 3px;
+      height: 3px;
+      animation: sparkle 1.5s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-30px); }
+    }
+
+    .heart {
+      font-size: 1.5em;
+      animation: fall 6s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        opacity: 0;
+        transform: translateY(-10vh) rotate(0deg);
+      }
+      20% { opacity: 1; }
+      90% { opacity: 1; }
+      100% {
+        opacity: 0;
+        transform: translateY(110vh) rotate(360deg);
+      }
+      audio {
+        color: transparent;
+        
+      }
+    }
+  </style>
+</head>
+<body>
+    <audio controls  src="./iloveyoushivuu.mp3.mp3">Check Sound</audio>
+  <div class="sparkles" id="sparkles"></div>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <div class="love-text">I Love You 💜</div>
+    <div class="name">Mam ji</div>
+    <div class="name" style="font-size: 2em;">Mera KuhcuPuchu😘</div>
+    <div class="message">You Light Up My World Like Nobody Else / I Love You Soo Much Shivuu🌟</div>
+    <button class="purple-btn" onclick="addHearts()">Click for More Love!</button>
+  </div>
+
+  <script>
+    function createSparkles() {
+      const sparklesContainer = document.getElementById('sparkles');
+      for (let i = 0; i < 50; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 2 + 's';
+        sparklesContainer.appendChild(sparkle);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+
+      // Red and Neon Green heart emojis
+      const colors = ['❤️', '💚'];
+      heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.getElementById('hearts').appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    function addHearts() {
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    createSparkles();
+    setInterval(createHeart, 300);
+  </script>
+  
+</body>
+</html>
